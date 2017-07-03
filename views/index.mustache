@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Directory</title>
+    <link rel="stylesheet" href="../static/styles.css">
+  </head>
+  <body>
+    <header>
+      <span class="header-link"><a href="http://localhost:3000/available/">Show All Available</a></span>
+      <span class="header-link"><a href="http://localhost:3000/employed/">Show All Employed</a></span>
+    </header>
+    <div class="dir-container">
+      {{#users}}
+        <div class="dir-user">
+          <img src="{{avatar}}" alt="{{name}}'s avatar'" class="dir-user-image">
+          <a href="user/{{id}}/{{username}}"><h2 class="dir-user-name">{{name}}</h2></a>
+          {{#job}} <!-- if job != null -->
+            <p class="employed">{{job}}, {{company}}</p>
+          {{/job}}
+          {{^job}} <!-- if job is null -->
+            <p class="available">Available for Hire</p>
+          {{/job}}
+        </div>
+      {{/users}}
+    </div>
+  </body>
+</html>

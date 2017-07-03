@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User {{user.name}}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+  <body>
+    <div class="user-container">
+      <div class="avatar-container">
+        <div class="user-img" style="background-image:url({{user.avatar}});">
+        </div>
+      </div>
+      <div class="user-name">
+        <h1 class="user-name-big">{{user.name}}</h1>
+        <p>{{#user.address.city}} <!-- if city is available -->
+          {{user.address.city}}, <!--  print it -->
+        {{/user.address.city}}
+        {{user.address.country}} |
+        {{#user.job}} <!-- if the user has a job -->
+          {{user.job}}, {{user.company}}<br>
+        {{/user.job}}
+        {{^user.job}} <!-- if the user doesn't have a job, make them available -->
+          <span class="available">Available for Hire</span><br>
+        {{/user.job}}
+        {{user.email}} | {{user.phone}}
+        </p>
+      </div>
+      {{#user.university}}
+        <div class="user-heading">
+          <p><strong>Education</strong></p>
+        </div>
+        <div class="user-detail">
+          <p>{{user.university}}</p>
+        </div>
+      {{/user.university}}
+      <div class="user-heading">
+        <p><strong>Skills</strong></p>
+      </div>
+      <div class="user-detail">
+        <ul>
+          {{#user.skills}}
+            <li>{{.}}</li>
+          {{/user.skills}}
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
